@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
       >
         <Providers>
-          <header className="relative flex justify-around p-5">
+          <header className="absolute flex w-full justify-around p-5">
             <div className="flex items-center">
               <h1 className="text-3xl font-bold">Stock Tracker</h1>
             </div>
@@ -40,7 +40,7 @@ export default function RootLayout({
                 className="bg-green-950 text-green-100"
                 data-hover={false}
               >
-                Sign Up
+                <a href="/signup">Sign Up</a>
               </Button>
               <Button
                 radius="full"
