@@ -18,5 +18,7 @@ public class UserService {
         return userRepo.findByUsername(username);
     }
 
-
+//    public String getUserPasswordHash(String username) {
+//        return userRepo.getPasswordHashByUsername(username);
+//    }
 }
