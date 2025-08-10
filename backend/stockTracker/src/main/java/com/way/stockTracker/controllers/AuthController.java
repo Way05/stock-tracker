@@ -5,10 +5,7 @@ import com.way.stockTracker.services.UserService;
 import com.way.stockTracker.dto.LoginRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -18,7 +15,7 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/signup")
-    public String signup(@RequestBody LoginRequestDTO signupRequest) {
+    public String signup(@ModelAttribute LoginRequestDTO signupRequest) {
         User checkExists = userService.findUserByUsername(signupRequest.getUsername());
         if(checkExists != null) {
             return "User already exists";
