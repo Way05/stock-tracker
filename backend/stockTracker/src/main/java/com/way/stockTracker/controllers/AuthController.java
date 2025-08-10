@@ -1,6 +1,8 @@
-package com.way.stockTracker;
+package com.way.stockTracker.controllers;
 
-import dto.LoginRequestDTO;
+import com.way.stockTracker.models.User;
+import com.way.stockTracker.services.UserService;
+import com.way.stockTracker.dto.LoginRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;

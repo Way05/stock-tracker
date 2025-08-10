@@ -1,5 +1,7 @@
-package com.way.stockTracker;
+package com.way.stockTracker.services;
 
+import com.way.stockTracker.models.User;
+import com.way.stockTracker.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

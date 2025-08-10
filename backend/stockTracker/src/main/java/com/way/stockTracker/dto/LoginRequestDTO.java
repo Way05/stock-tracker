@@ -1,4 +1,4 @@
-package dto;
+package com.way.stockTracker.dto;
 
 import lombok.Getter;
 import lombok.Setter;

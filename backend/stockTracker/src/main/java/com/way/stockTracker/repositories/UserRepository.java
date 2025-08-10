@@ -1,5 +1,6 @@
-package com.way.stockTracker;
+package com.way.stockTracker.repositories;
 
+import com.way.stockTracker.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

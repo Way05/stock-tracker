@@ -1,6 +1,5 @@
-package com.way.stockTracker;
+package com.way.stockTracker.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
