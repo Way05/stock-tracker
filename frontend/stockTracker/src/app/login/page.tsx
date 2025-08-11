@@ -4,7 +4,7 @@ import { LoginForm } from "../components/login";
 
 export default function Login() {
   return (
-    <div className="mx-auto flex h-screen items-center justify-center align-middle">
+    <div className="mx-auto flex h-screen items-center justify-center">
       <div>
         <Card className="bg-stone-900">
           <CardBody>

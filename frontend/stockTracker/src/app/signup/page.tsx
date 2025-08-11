@@ -4,7 +4,7 @@ import { SignupForm } from "../components/signUp";
 
 export default function SignUp() {
   return (
-    <div className="mx-auto flex h-screen items-center justify-center align-middle">
+    <div className="mx-auto flex h-screen items-center justify-center">
       <div>
         <Card className="bg-stone-900">
           <CardBody>
