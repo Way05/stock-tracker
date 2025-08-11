@@ -5,7 +5,6 @@ import com.way.stockTracker.services.PasswordService;
 import com.way.stockTracker.services.UserService;
 import com.way.stockTracker.dto.LoginRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
