@@ -8,7 +8,7 @@ export default function SignUp() {
       <div>
         <Card className="bg-stone-900">
           <CardBody>
-            <h1 className="m-5 text-center">Sign Up Form</h1>
+            <h1 className="m-5 text-center">Sign Up</h1>
             <SignupForm />
           </CardBody>
         </Card>

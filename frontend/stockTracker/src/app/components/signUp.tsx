@@ -6,19 +6,27 @@ export function SignupForm() {
   return (
     <form action={signup}>
       <div className="mb-5 w-100">
-        <Input id="name" name="name" placeholder="name" variant="bordered" />
+        <Input
+          id="name"
+          name="name"
+          label="username"
+          placeholder="name"
+          variant="bordered"
+        />
       </div>
       <div className="mb-5">
         <Input
           id="password"
           name="password"
+          label="password"
           type="password"
           placeholder="password"
+          color="default"
           variant="bordered"
         />
       </div>
       <div className="flex justify-end">
-        <Button type="submit" variant="light" className="text-white">
+        <Button type="submit" color="primary" variant="ghost">
           Sign Up
         </Button>
       </div>
