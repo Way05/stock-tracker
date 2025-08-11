@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} dark h-screen antialiased`}
       >
         <Providers>
           {/* <header className="absolute flex w-full justify-around p-5">
