@@ -10,7 +10,7 @@ export default function Home() {
             <a href="/signup">Sign Up</a>
           </Button>
           <Button color="success" variant="ghost" radius="full" disableRipple>
-            Login
+            <a href="/login">Login</a>
           </Button>
         </div>
       </main>
