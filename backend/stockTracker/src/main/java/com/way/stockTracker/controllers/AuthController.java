@@ -1,10 +1,14 @@
 package com.way.stockTracker.controllers;
 
 import com.way.stockTracker.models.User;
+import com.way.stockTracker.responses.LoginResponse;
+import com.way.stockTracker.services.AuthService;
+import com.way.stockTracker.services.JwtService;
 import com.way.stockTracker.services.PasswordService;
 import com.way.stockTracker.services.UserService;
-import com.way.stockTracker.dto.LoginRequestDTO;
+import com.way.stockTracker.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,30 +21,25 @@ public class AuthController {
     @Autowired
     private PasswordService passwordService;
 
+    //    @Autowired
+    private AuthService authService;
+
+    @Autowired
+    private JwtService jwtService;
+
     @PostMapping("/signup")
-    public String signup(@ModelAttribute LoginRequestDTO signupRequest) {
-        User userExists = userService.findUserByUsername(signupRequest.getUsername());
-        if(userExists != null) {
-            return "User already exists";
-        } else {
-            userService.createUser(new User(signupRequest.getUsername(), passwordService.hashPassword(signupRequest.getPassword())));
-            return "New user successfully created";
-        }
+    public ResponseEntity<LoginResponse> signup(@ModelAttribute UserDTO signupRequest) {
+        User signupUser = authService.signup(signupRequest);
+        String jwtToken = jwtService.generateToken(signupUser);
+        LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
+        return ResponseEntity.ok(loginResponse);
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute LoginRequestDTO loginRequest) {
-        User userExists = userService.findUserByUsername(loginRequest.getUsername());
-        if(userExists == null) {
-            return "User does not exist";
-        } else {
-            String dbPasswordHash = userExists.getPassword();
-            boolean compare = passwordService.verifyPassword(loginRequest.getPassword(), dbPasswordHash);
-            if(compare) {
-                return "Password correct";
-            } else {
-                return "Incorrect password";
-            }
-        }
+    public ResponseEntity<LoginResponse> login(@ModelAttribute UserDTO loginRequest) {
+        User loginUser = authService.authenticate(loginRequest);
+        String jwtToken = jwtService.generateToken(loginUser);
+        LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
+        return ResponseEntity.ok(loginResponse);
     }
 }
