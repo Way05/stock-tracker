@@ -1,4 +1,4 @@
-import { setJWT } from "../actions/auth";
+import { setJWT } from "../auth";
 import { authResponse } from "../dataInterfaces";
 
 export async function login(formData: FormData) {
