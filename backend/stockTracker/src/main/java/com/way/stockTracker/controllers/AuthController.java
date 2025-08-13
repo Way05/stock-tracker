@@ -28,18 +28,32 @@ public class AuthController {
     private JwtService jwtService;
 
     @PostMapping("/signup")
-    public ResponseEntity<LoginResponse> signup(@ModelAttribute UserDTO signupRequest) {
-        User signupUser = authService.signup(signupRequest);
-        String jwtToken = jwtService.generateToken(signupUser);
-        LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
-        return ResponseEntity.ok(loginResponse);
+    public ResponseEntity<Object> signup(@ModelAttribute UserDTO signupRequest) {
+        boolean userExists = authService.checkUserExists(signupRequest);
+        if (!userExists) {
+            User signupUser = authService.signup(signupRequest);
+            String jwtToken = jwtService.generateToken(signupUser);
+            LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
+            return ResponseEntity.ok(loginResponse);
+        }
+        return ResponseEntity.ok("User already exists");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@ModelAttribute UserDTO loginRequest) {
-        User loginUser = authService.authenticate(loginRequest);
-        String jwtToken = jwtService.generateToken(loginUser);
-        LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
-        return ResponseEntity.ok(loginResponse);
+    public ResponseEntity<Object> login(@ModelAttribute UserDTO loginRequest) {
+        boolean userExists = authService.checkUserExists(loginRequest);
+        if (userExists) {
+            boolean passwordCheck = authService.authenticate(loginRequest);
+            if (passwordCheck) {
+                User loginUser = authService.login(loginRequest);
+                String jwtToken = jwtService.generateToken(loginUser);
+                LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
+                return ResponseEntity.ok(loginResponse);
+            } else {
+                return ResponseEntity.ok("Incorrect password");
+            }
+        } else {
+            return ResponseEntity.ok("User does not exist");
+        }
     }
 }

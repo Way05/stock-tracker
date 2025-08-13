@@ -2,6 +2,7 @@ package com.way.stockTracker.services;
 
 import com.way.stockTracker.dto.UserDTO;
 import com.way.stockTracker.models.User;
+import com.way.stockTracker.responses.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,26 +15,27 @@ public class AuthService {
     @Autowired
     private PasswordService passwordService;
 
-    public User signup(UserDTO input) {
+    @Autowired
+    private JwtService jwtService;
+
+    public boolean checkUserExists(UserDTO input) {
         User userExists = userService.findUserByUsername(input.getUsername());
-        if (userExists != null) {
-            throw new RuntimeException("User already exists");
-        }
+        return userExists != null;
+    }
+
+    public User signup(UserDTO input) {
         User newUser = new User(input.getUsername(), passwordService.hashPassword(input.getPassword()));
         userService.createUser(newUser);
         return newUser;
     }
 
-    public User authenticate(UserDTO input) {
+    public User login(UserDTO input) {
+        return userService.findUserByUsername(input.getUsername());
+    }
+
+    public boolean authenticate(UserDTO input) {
         User userExists = userService.findUserByUsername(input.getUsername());
-        if (userExists == null) {
-            throw new RuntimeException("User does not exist");
-        }
         String dbPasswordHash = userExists.getPassword();
-        boolean compare = passwordService.verifyPassword(input.getPassword(), dbPasswordHash);
-        if (!compare) {
-            throw new RuntimeException("Incorrect password");
-        }
-        return userExists;
+        return passwordService.verifyPassword(input.getPassword(), dbPasswordHash);
     }
 }
