@@ -1,6 +1,6 @@
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
-import { signup } from "../actions/auth";
+import { signup } from "../signup/actions";
 
 export function SignupForm() {
   return (
