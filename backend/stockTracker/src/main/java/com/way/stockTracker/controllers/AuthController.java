@@ -8,6 +8,7 @@ import com.way.stockTracker.services.PasswordService;
 import com.way.stockTracker.services.UserService;
 import com.way.stockTracker.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class AuthController {
             LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
             return ResponseEntity.ok(loginResponse);
         }
-        return ResponseEntity.ok("User already exists");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exists");
     }
 
     @PostMapping("/login")
@@ -50,10 +51,10 @@ public class AuthController {
                 LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpirationTime());
                 return ResponseEntity.ok(loginResponse);
             } else {
-                return ResponseEntity.ok("Incorrect password");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Incorrect password");
             }
         } else {
-            return ResponseEntity.ok("User does not exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User does not exist");
         }
     }
 }
