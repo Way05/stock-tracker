@@ -1,4 +1,4 @@
-import { clearJWT } from "../auth";
+import { clearJWT } from "../jwtHandler";
 import { Button } from "@heroui/button";
 
 export default async function Dashboard() {

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { setJWT } from "../auth";
+import { setJWT } from "../jwtHandler";
 import { authResponse } from "../dataInterfaces";
 import { createToast } from "../components/createToast";
 
