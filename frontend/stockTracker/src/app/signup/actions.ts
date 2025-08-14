@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { setJWT } from "../auth";
 import { authResponse } from "../dataInterfaces";
 
@@ -22,6 +23,7 @@ export async function signup(formData: FormData) {
     if (response.status == 200) {
       const data: authResponse = await response.json();
       setJWT(data["token"]);
+      redirect("/dashboard");
     }
   } catch (e) {
     console.error(e);
