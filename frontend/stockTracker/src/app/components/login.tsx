@@ -8,7 +8,7 @@ export function LoginForm() {
       <div className="mb-5 w-100">
         <Input
           id="name"
-          name="name"
+          name="username"
           label="username"
           placeholder="name"
           variant="bordered"
