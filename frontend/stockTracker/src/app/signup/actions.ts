@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { setJWT } from "../auth";
 import { authResponse } from "../dataInterfaces";
+import { createToast } from "../components/createToast";
 
 export async function signup(formData: FormData) {
   formData.forEach((data) => {
@@ -26,6 +27,9 @@ export async function signup(formData: FormData) {
       redirect("/dashboard");
     }
   } catch (e) {
-    console.error(e);
+    if (e instanceof Error) {
+      console.error(e.name);
+      createToast(`${e.message}`, "danger");
+    }
   }
 }
