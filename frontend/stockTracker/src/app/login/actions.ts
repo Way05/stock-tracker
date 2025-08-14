@@ -1,13 +1,13 @@
+import { redirect } from "next/navigation";
 import { setJWT } from "../auth";
 import { authResponse } from "../dataInterfaces";
+import { createToast } from "../components/createToast";
 
 export async function login(formData: FormData) {
-  formData.forEach((data) => {
-    if (!data) return;
-  });
+  let success: boolean = false;
 
   const data: FormData = new FormData();
-  data.append("name", formData.get("user") as string);
+  data.append("username", formData.get("username") as string);
   data.append("password", formData.get("password") as string);
 
   try {
@@ -22,8 +22,17 @@ export async function login(formData: FormData) {
     if (response.status == 200) {
       const data: authResponse = await response.json();
       setJWT(data["token"]);
+      success = true;
+    } else {
+      const data: string = await response.text();
+      createToast(`${data}`, "danger");
     }
   } catch (e) {
-    console.error(e);
+    if (e instanceof Error) {
+      console.error(e.name);
+      createToast(`${e.message}`, "danger");
+    }
   }
+
+  if (success) redirect("/dashboard");
 }
