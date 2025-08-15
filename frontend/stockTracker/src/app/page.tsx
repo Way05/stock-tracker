@@ -1,4 +1,5 @@
 import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
 
 export default function Home() {
   return (
@@ -6,11 +7,25 @@ export default function Home() {
       <main className="row-start-2 flex-wrap items-center justify-items-center gap-[32px] sm:items-start">
         <h1 className="m-5 text-3xl font-bold">Stock Tracker</h1>
         <div className="flex gap-5">
-          <Button color="success" variant="ghost" radius="full" disableRipple>
-            <a href="/signup">Sign Up</a>
+          <Button
+            color="success"
+            variant="ghost"
+            radius="full"
+            href="/signup"
+            as={Link}
+            disableRipple
+          >
+            Sign Up
           </Button>
-          <Button color="success" variant="ghost" radius="full" disableRipple>
-            <a href="/login">Login</a>
+          <Button
+            color="success"
+            variant="ghost"
+            radius="full"
+            href="/login"
+            as={Link}
+            disableRipple
+          >
+            Login
           </Button>
         </div>
       </main>

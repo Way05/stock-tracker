@@ -1,3 +1,4 @@
+import { Link } from "@heroui/link";
 import { clearJWT } from "../jwtHandler";
 import { Button } from "@heroui/button";
 
@@ -18,13 +19,13 @@ export default async function Dashboard() {
 
       <div className="flex w-full">
         <div className="flex w-1/2 justify-center">
-          <Button>
-            <a href="/dashboard/tracker">Tracker</a>
+          <Button href="/dashboard/tracker" as={Link}>
+            Tracker
           </Button>
         </div>
         <div className="flex w-1/2 justify-center">
-          <Button>
-            <a href="/dashboard/bulletin">Bulletin</a>
+          <Button href="/dashboard/bulletin" as={Link}>
+            Bulletin
           </Button>
         </div>
       </div>

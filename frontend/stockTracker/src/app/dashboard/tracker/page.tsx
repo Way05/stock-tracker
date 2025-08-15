@@ -1,17 +1,30 @@
 import StockCard from "@/app/components/stockCard";
 import { clearJWT } from "@/app/jwtHandler";
 import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
 
 export default function Tracker() {
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center">
       <div className="absolute top-5 flex gap-5">
         <h1 className="text-3xl font-bold">tracker</h1>
-        <Button type="submit" color="success" variant="ghost">
-          <a href="/dashboard">dashboard</a>
+        <Button
+          type="submit"
+          color="success"
+          variant="ghost"
+          href="/dashboard"
+          as={Link}
+        >
+          dashboard
         </Button>
-        <Button type="submit" color="success" variant="ghost">
-          <a href="/dashboard/bulletin">bulletin</a>
+        <Button
+          type="submit"
+          color="success"
+          variant="ghost"
+          href="/dashboard/bulletin"
+          as={Link}
+        >
+          bulletin
         </Button>
         <Button
           type="submit"
