@@ -8,6 +8,12 @@ export default async function Dashboard() {
       <Button type="submit" color="success" variant="ghost" onPress={clearJWT}>
         Log Out
       </Button>
+      <Button>
+        <a href="/dashboard/tracker">Tracker</a>
+      </Button>
+      <Button>
+        <a href="/dashboard/bulletin">Bulletin</a>
+      </Button>
     </div>
   );
 }
