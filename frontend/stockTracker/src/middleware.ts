@@ -6,9 +6,9 @@ export function middleware(request: NextRequest) {
   if (protectedRoutes.some((route) => pathname.startsWith(route))) {
     const JWT = request.cookies.get("jwtToken");
 
-    if (!JWT) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
+    // if (!JWT) {
+    //   return NextResponse.redirect(new URL("/", request.url));
+    // }
   }
   return NextResponse.next();
 }
