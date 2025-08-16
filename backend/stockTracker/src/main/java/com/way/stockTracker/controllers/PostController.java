@@ -4,9 +4,7 @@ import com.way.stockTracker.dto.PostDTO;
 import com.way.stockTracker.models.Post;
 import com.way.stockTracker.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +22,8 @@ public class PostController {
         return ResponseEntity.ok("Post created");
     }
 
-    @PostMapping("/retrieve")
-    public List<Post> getPosts() {
-        return postService.getAllPosts();
+    @GetMapping("/retrieve")
+    public ResponseEntity<Object> getPosts() {
+        return ResponseEntity.ok(postService.getAllPosts());
     }
 }
