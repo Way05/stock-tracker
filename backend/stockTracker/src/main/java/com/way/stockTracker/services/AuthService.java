@@ -2,7 +2,6 @@ package com.way.stockTracker.services;
 
 import com.way.stockTracker.dto.UserDTO;
 import com.way.stockTracker.models.User;
-import com.way.stockTracker.responses.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
