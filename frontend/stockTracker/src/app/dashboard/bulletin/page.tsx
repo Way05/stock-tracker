@@ -1,15 +1,29 @@
-// "use client";
 import { Link } from "@heroui/link";
 import { clearJWT } from "@/app/jwtHandler";
 import { Button } from "@heroui/button";
 import StockPost from "@/app/components/stockPost";
 import CreatePostDrawer from "@/app/components/createPostDrawer";
+import { postObject, postResponse } from "@/app/dataInterfaces";
 
 export default async function Bulletin() {
-  const response = await fetch("http://localhost:8080/api/post/retrieve", {
-    method: "GET",
-  });
-  const posts = await response.json();
+  let posts: postResponse = { posts: [] };
+  try {
+    const response: Response = await fetch(
+      "http://localhost:8080/api/post/retrieve",
+      {
+        method: "GET",
+        headers: {
+          "Cache-Control": "max-age-3600",
+        },
+        next: { revalidate: 3600 },
+      },
+    );
+    posts = await response.json();
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error(e.message);
+    }
+  }
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center">
       <div className="absolute top-5 flex gap-5">
@@ -44,7 +58,7 @@ export default async function Bulletin() {
       <h1>Posts</h1>
       <div>
         {posts &&
-          posts.map((post, i) => {
+          posts.posts.map((post: postObject, i: number) => {
             return (
               <StockPost
                 key={i}
