@@ -7,7 +7,3 @@ export interface postObject {
   title: string;
   content: string;
 }
-
-export interface postResponse {
-  posts: postObject[];
-}
