@@ -4,10 +4,12 @@ import { clearJWT } from "@/app/jwtHandler";
 import { Button } from "@heroui/button";
 import StockPost from "@/app/components/stockPost";
 import CreatePostDrawer from "@/app/components/createPostDrawer";
-import { getPosts } from "./actions";
 
 export default async function Bulletin() {
-  const posts = await getPosts();
+  const response = await fetch("http://localhost:8080/api/post/retrieve", {
+    method: "GET",
+  });
+  const posts = await response.json();
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center">
       <div className="absolute top-5 flex gap-5">
@@ -41,11 +43,16 @@ export default async function Bulletin() {
       </div>
       <h1>Posts</h1>
       <div>
-        {posts.map((post, i) => {
-          return (
-            <StockPost key={i} title={post.title} description={post.content} />
-          );
-        })}
+        {posts &&
+          posts.map((post, i) => {
+            return (
+              <StockPost
+                key={i}
+                title={post.title}
+                description={post.content}
+              />
+            );
+          })}
       </div>
       <div className="absolute top-1/2 right-5 -translate-y-1/2">
         <CreatePostDrawer />
