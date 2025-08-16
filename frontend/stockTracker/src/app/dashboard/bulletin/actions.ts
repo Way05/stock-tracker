@@ -31,17 +31,17 @@ export async function getPosts() {
       "http://localhost:8080/api/post/retrieve",
       {
         method: "GET",
+        headers: {
+          "Cache-Control": "max-age-3600",
+        },
       },
     );
 
-    if (response.status == 200) {
-      const data = await response.json();
-      console.log(data);
-    }
+    const data = await response.json();
+    return data;
   } catch (e) {
     if (e instanceof Error) {
-      console.error(e.name);
-      createToast(`${e.message}`, "danger");
+      console.error(e.message);
     }
   }
 }
