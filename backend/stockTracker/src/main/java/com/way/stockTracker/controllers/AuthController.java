@@ -4,8 +4,6 @@ import com.way.stockTracker.models.User;
 import com.way.stockTracker.responses.LoginResponse;
 import com.way.stockTracker.services.AuthService;
 import com.way.stockTracker.services.JwtService;
-import com.way.stockTracker.services.PasswordService;
-import com.way.stockTracker.services.UserService;
 import com.way.stockTracker.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
