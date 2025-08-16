@@ -6,4 +6,5 @@ export interface authResponse {
 export interface postObject {
   title: string;
   content: string;
+  author: string;
 }
