@@ -1,10 +1,5 @@
 import { createToast } from "@/app/components/createToast";
 
-const placeholder = [
-  { title: "nvda", content: "buy" },
-  { title: "nvda", content: "buy" },
-];
-
 export async function createPost(formData: FormData) {
   const data: FormData = new FormData();
   data.append("title", formData.get("title") as string);
@@ -28,11 +23,6 @@ export async function createPost(formData: FormData) {
       createToast(`${e.message}`, "danger");
     }
   }
-
-  placeholder.push({
-    title: formData.get("title") as string,
-    content: formData.get("content") as string,
-  });
 }
 
 export async function getPosts() {
@@ -47,7 +37,6 @@ export async function getPosts() {
     if (response.status == 200) {
       const data = await response.json();
       console.log(data);
-      return placeholder;
     }
   } catch (e) {
     if (e instanceof Error) {
