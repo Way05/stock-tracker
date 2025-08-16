@@ -7,7 +7,9 @@ import PostList from "@/app/components/postList";
 import { getPosts } from "./actions";
 
 export default async function Bulletin() {
-  const posts: postObject[] = await getPosts();
+  const posts: postObject[] = (await getPosts()) || [
+    { title: "No posts yet", content: "..." },
+  ];
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center">
       <div className="absolute top-5 flex gap-5">
