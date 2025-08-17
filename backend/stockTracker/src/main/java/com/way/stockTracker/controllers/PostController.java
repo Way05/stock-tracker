@@ -18,7 +18,6 @@ public class PostController {
     public ResponseEntity<Object> createPost( @ModelAttribute PostDTO createRequest) {
         postService.createPost(new Post(createRequest.getTitle(), createRequest.getContent(), createRequest.getAuthor(), createRequest.getVotes()));
         return ResponseEntity.ok("Post created");
-        }
     }
 
     @GetMapping("/retrieve")
