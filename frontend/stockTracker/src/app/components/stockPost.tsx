@@ -1,9 +1,11 @@
+import { Button } from "@heroui/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 
 type stockProps = {
   title: string;
   description: string;
   author: string;
+  votes: number;
 };
 
 export default function StockPost(props: stockProps) {
@@ -12,7 +14,14 @@ export default function StockPost(props: stockProps) {
       <Card className="border-1 border-white/50 p-2 text-center">
         <CardHeader className="p-1">{props.title}</CardHeader>
         <CardBody className="p-1">{props.description}</CardBody>
-        <CardFooter className="p-1">{props.author}</CardFooter>
+        <CardFooter className="justify-between p-1">
+          <div>{props.author}</div>
+          {/* <div>
+            <Button isIconOnly>^</Button>
+            {props.votes}
+            <Button isIconOnly>v</Button>
+          </div> */}
+        </CardFooter>
       </Card>
     </div>
   );

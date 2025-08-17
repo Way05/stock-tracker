@@ -11,7 +11,13 @@ export default function PostList(props: listProps) {
       {props.list &&
         props.list.map((post: postObject, i: number) => {
           return (
-            <StockPost key={i} title={post.title} description={post.content} />
+            <StockPost
+              key={i}
+              title={post.title}
+              description={post.content}
+              author={post.author}
+              votes={post.votes}
+            />
           );
         })}
     </div>

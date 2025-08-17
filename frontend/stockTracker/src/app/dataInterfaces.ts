@@ -7,4 +7,5 @@ export interface postObject {
   title: string;
   content: string;
   author: string;
+  votes: number;
 }
