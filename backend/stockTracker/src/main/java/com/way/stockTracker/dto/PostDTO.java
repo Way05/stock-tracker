@@ -8,4 +8,6 @@ import lombok.Setter;
 public class PostDTO {
     String title;
     String content;
+    String author;
+    int votes;
 }

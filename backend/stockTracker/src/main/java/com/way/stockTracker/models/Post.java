@@ -13,9 +13,13 @@ public class Post {
     private String id;
     private String title;
     private String content;
+    private String author;
+    private int votes;
 
-    public Post(String title, String content) {
+    public Post(String title, String content, String author, int votes) {
         this.title = title;
         this.content = content;
+        this.author = author;
+        this.votes = votes;
     }
 }
