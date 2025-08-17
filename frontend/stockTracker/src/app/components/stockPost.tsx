@@ -5,6 +5,7 @@ type stockProps = {
   title: string;
   description: string;
   author: string;
+  date: Date;
   votes: number;
 };
 
@@ -15,7 +16,9 @@ export default function StockPost(props: stockProps) {
         <CardHeader className="p-1">{props.title}</CardHeader>
         <CardBody className="p-1">{props.description}</CardBody>
         <CardFooter className="justify-between p-1">
-          <div>{props.author}</div>
+          <div>
+            {props.author} {props.date.toDateString()}
+          </div>
           {/* <div>
             <Button isIconOnly>^</Button>
             {props.votes}
