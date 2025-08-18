@@ -8,7 +8,7 @@ import { getPosts } from "./actions";
 
 export default async function Bulletin() {
   const posts: postObject[] = (await getPosts()) || [
-    { title: "No posts yet", content: "..." },
+    { title: "No posts yet", content: "...", date: new Date() },
   ];
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center">

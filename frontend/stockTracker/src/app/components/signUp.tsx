@@ -1,11 +1,12 @@
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { signup } from "../signup/actions";
+import { Link } from "@heroui/link";
 
 export function SignupForm() {
   return (
     <form action={signup}>
-      <div className="mb-5 w-100">
+      <div className="mb-5 w-80">
         <Input
           id="name"
           name="username"
@@ -25,7 +26,10 @@ export function SignupForm() {
           variant="bordered"
         />
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+        <Link href="/login" underline="hover">
+          Already a user?
+        </Link>
         <Button type="submit" color="primary" variant="ghost">
           Sign Up
         </Button>

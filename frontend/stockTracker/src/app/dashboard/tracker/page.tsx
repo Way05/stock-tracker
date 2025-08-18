@@ -1,6 +1,7 @@
 import StockCard from "@/app/components/stockCard";
 import { clearCookies } from "@/app/cookieHandler";
 import { Button } from "@heroui/button";
+import { Card, CardBody, CardHeader } from "@heroui/card";
 import { Link } from "@heroui/link";
 
 export default function Tracker() {
@@ -36,42 +37,53 @@ export default function Tracker() {
         </Button>
       </div>
       <div className="grid w-full grid-rows-3">
-        <div className="row-start-2 mx-auto grid grid-cols-3">
+        <div className="row-start-2 mx-auto grid grid-cols-3 gap-5">
           <div className="col-span-1">
-            <h1>stats</h1>
-            <p>text</p>
+            <Card>
+              <CardHeader>
+                <h1 className="text-2xl">stats</h1>
+              </CardHeader>
+              <CardBody>
+                <p>Holdings</p>
+                <p>Current Value</p>
+              </CardBody>
+            </Card>
           </div>
-          <div className="col-span-2 row-span-1 grid grid-cols-5 gap-1">
-            <StockCard
-              ticker="NVDA"
-              name="Nvidia"
-              price="$0.00 USD"
-            ></StockCard>
-            <StockCard
-              ticker="NVDA"
-              name="Nvidia"
-              price="$0.00 USD"
-            ></StockCard>
-            <StockCard
-              ticker="NVDA"
-              name="Nvidia"
-              price="$0.00 USD"
-            ></StockCard>
-            <StockCard
-              ticker="NVDA"
-              name="Nvidia"
-              price="$0.00 USD"
-            ></StockCard>
-            <StockCard
-              ticker="NVDA"
-              name="Nvidia"
-              price="$0.00 USD"
-            ></StockCard>
-            <StockCard
-              ticker="NVDA"
-              name="Nvidia"
-              price="$0.00 USD"
-            ></StockCard>
+          <div className="col-span-2 row-span-1">
+            <Card>
+              <CardBody className="grid grid-cols-5 gap-1">
+                <StockCard
+                  ticker="NVDA"
+                  name="Nvidia"
+                  price="$0.00 USD"
+                ></StockCard>
+                <StockCard
+                  ticker="NVDA"
+                  name="Nvidia"
+                  price="$0.00 USD"
+                ></StockCard>
+                <StockCard
+                  ticker="NVDA"
+                  name="Nvidia"
+                  price="$0.00 USD"
+                ></StockCard>
+                <StockCard
+                  ticker="NVDA"
+                  name="Nvidia"
+                  price="$0.00 USD"
+                ></StockCard>
+                <StockCard
+                  ticker="NVDA"
+                  name="Nvidia"
+                  price="$0.00 USD"
+                ></StockCard>
+                <StockCard
+                  ticker="NVDA"
+                  name="Nvidia"
+                  price="$0.00 USD"
+                ></StockCard>
+              </CardBody>
+            </Card>
           </div>
         </div>
       </div>

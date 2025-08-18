@@ -13,10 +13,10 @@ export default function StockPost(props: stockProps) {
   return (
     <div className="m-2 w-100">
       <Card className="border-1 border-white/50 p-2 text-center">
-        <CardHeader className="p-1">{props.title}</CardHeader>
+        <CardHeader className="p-1 text-lg">{props.title}</CardHeader>
         <CardBody className="p-1">{props.description}</CardBody>
         <CardFooter className="justify-between p-1">
-          <div>
+          <div className="text-xs text-white/50">
             Posted by {props.author} on {props.date}
           </div>
           {/* <div>
