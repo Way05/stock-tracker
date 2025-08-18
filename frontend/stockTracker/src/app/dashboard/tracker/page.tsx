@@ -1,5 +1,5 @@
 import StockCard from "@/app/components/stockCard";
-import { clearJWT } from "@/app/jwtHandler";
+import { clearCookies } from "@/app/cookieHandler";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 
@@ -30,7 +30,7 @@ export default function Tracker() {
           type="submit"
           color="success"
           variant="ghost"
-          onPress={clearJWT}
+          onPress={clearCookies}
         >
           Log Out
         </Button>

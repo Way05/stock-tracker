@@ -1,5 +1,5 @@
 import { Link } from "@heroui/link";
-import { clearJWT } from "@/app/jwtHandler";
+import { clearCookies } from "@/app/cookieHandler";
 import { Button } from "@heroui/button";
 import CreatePostDrawer from "@/app/components/createPostDrawer";
 import { postObject } from "@/app/dataInterfaces";
@@ -36,7 +36,7 @@ export default async function Bulletin() {
           type="submit"
           color="success"
           variant="ghost"
-          onPress={clearJWT}
+          onPress={clearCookies}
         >
           Log Out
         </Button>

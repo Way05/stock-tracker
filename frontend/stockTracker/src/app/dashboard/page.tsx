@@ -1,5 +1,5 @@
 import { Link } from "@heroui/link";
-import { clearJWT } from "../jwtHandler";
+import { clearCookies } from "../cookieHandler";
 import { Button } from "@heroui/button";
 
 export default async function Dashboard() {
@@ -11,7 +11,7 @@ export default async function Dashboard() {
           type="submit"
           color="success"
           variant="ghost"
-          onPress={clearJWT}
+          onPress={clearCookies}
         >
           Log Out
         </Button>
