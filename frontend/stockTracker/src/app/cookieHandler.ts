@@ -11,8 +11,14 @@ export async function setJWT(jwt: string) {
   });
 }
 
-export async function clearJWT() {
+export async function clearCookies() {
   const cookieStore = await cookies();
   cookieStore.delete("jwtToken");
+  cookieStore.delete("user");
   redirect("/");
+}
+
+export async function setUsername(user: string) {
+  const cookieStore = await cookies();
+  cookieStore.set("user", user);
 }
