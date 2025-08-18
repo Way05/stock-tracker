@@ -10,6 +10,8 @@ export async function createPost(formData: FormData) {
   const cookieStore = await cookies();
   const jwtToken: string | undefined = cookieStore.get("jwtToken")?.value;
 
+  data.append("author", cookieStore.get("user")!.value);
+
   try {
     const response: Response = await fetch(
       "http://localhost:8080/api/post/create",
@@ -23,7 +25,7 @@ export async function createPost(formData: FormData) {
     );
 
     if (response.status == 200) {
-      createToast("Post created", "success");
+      // createToast("Post created", "success");
     }
   } catch (e) {
     if (e instanceof Error) {
