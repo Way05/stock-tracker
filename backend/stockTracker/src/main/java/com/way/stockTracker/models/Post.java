@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 @Data
 @NoArgsConstructor
@@ -16,14 +16,14 @@ public class Post {
     private String title;
     private String content;
     private String author;
-    private ZonedDateTime time;
+    private long date;
     private int votes;
 
-    public Post(String title, String content, String author, ZonedDateTime time, int votes) {
+    public Post(String title, String content, String author, long date, int votes) {
         this.title = title;
         this.content = content;
         this.author = author;
-        this.time = time;
+        this.date = date;
         this.votes = votes;
     }
 }
