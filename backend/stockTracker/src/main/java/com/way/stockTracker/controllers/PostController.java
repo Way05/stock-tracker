@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.ZonedDateTime;
+
 @RestController
 @RequestMapping("/api/post")
 public class PostController {
@@ -15,8 +17,9 @@ public class PostController {
     PostService postService;
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createPost( @ModelAttribute PostDTO createRequest) {
-        postService.createPost(new Post(createRequest.getTitle(), createRequest.getContent(), createRequest.getAuthor(), createRequest.getVotes()));
+    public ResponseEntity<Object> createPost(@ModelAttribute PostDTO createRequest) {
+        ZonedDateTime postTime = ZonedDateTime.now();
+        postService.createPost(new Post(createRequest.getTitle(), createRequest.getContent(), createRequest.getAuthor(), postTime, createRequest.getVotes()));
         return ResponseEntity.ok("Post created");
     }
 
