@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { setJWT } from "../jwtHandler";
+import { setJWT, setUsername } from "../cookieHandler";
 import { authResponse } from "../dataInterfaces";
 import { createToast } from "../components/createToast";
 
@@ -20,12 +20,14 @@ export async function signup(formData: FormData) {
     );
 
     if (response.status == 200) {
-      const data: authResponse = await response.json();
-      setJWT(data["token"]);
+      const res: authResponse = await response.json();
+      setJWT(res["token"]);
+      setUsername(data.get("username") as string);
+
       success = true;
     } else {
-      const data: string = await response.text();
-      createToast(`${data}`, "danger");
+      const res: string = await response.text();
+      createToast(`${res}`, "danger");
     }
   } catch (e) {
     if (e instanceof Error) {
