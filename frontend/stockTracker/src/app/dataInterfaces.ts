@@ -7,6 +7,6 @@ export interface postObject {
   title: string;
   content: string;
   author: string;
-  date: Date;
+  date: number;
   votes: number;
 }

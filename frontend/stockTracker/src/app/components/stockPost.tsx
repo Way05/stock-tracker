@@ -5,7 +5,7 @@ type stockProps = {
   title: string;
   description: string;
   author: string;
-  date: Date;
+  date: string;
   votes: number;
 };
 
@@ -17,7 +17,7 @@ export default function StockPost(props: stockProps) {
         <CardBody className="p-1">{props.description}</CardBody>
         <CardFooter className="justify-between p-1">
           <div>
-            {props.author} {props.date.toDateString()}
+            Posted by {props.author} on {props.date}
           </div>
           {/* <div>
             <Button isIconOnly>^</Button>
