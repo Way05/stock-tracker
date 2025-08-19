@@ -1,4 +1,4 @@
-import StockCard from "@/app/components/stockCard";
+import StockList from "@/app/components/stockList";
 import { clearCookies } from "@/app/cookieHandler";
 import { Button } from "@heroui/button";
 import { Card, CardBody, CardHeader } from "@heroui/card";
@@ -46,44 +46,13 @@ export default function Tracker() {
               <CardBody>
                 <p>Holdings</p>
                 <p>Current Value</p>
+                <p>Gross Returns</p>
+                <p>% Returns</p>
               </CardBody>
             </Card>
           </div>
           <div className="col-span-2 row-span-1">
-            <Card>
-              <CardBody className="grid grid-cols-5 gap-1">
-                <StockCard
-                  ticker="NVDA"
-                  name="Nvidia"
-                  price="$0.00 USD"
-                ></StockCard>
-                <StockCard
-                  ticker="NVDA"
-                  name="Nvidia"
-                  price="$0.00 USD"
-                ></StockCard>
-                <StockCard
-                  ticker="NVDA"
-                  name="Nvidia"
-                  price="$0.00 USD"
-                ></StockCard>
-                <StockCard
-                  ticker="NVDA"
-                  name="Nvidia"
-                  price="$0.00 USD"
-                ></StockCard>
-                <StockCard
-                  ticker="NVDA"
-                  name="Nvidia"
-                  price="$0.00 USD"
-                ></StockCard>
-                <StockCard
-                  ticker="NVDA"
-                  name="Nvidia"
-                  price="$0.00 USD"
-                ></StockCard>
-              </CardBody>
-            </Card>
+            <StockList />
           </div>
         </div>
       </div>
