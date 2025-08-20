@@ -42,6 +42,7 @@ export default async function Bulletin() {
         </Button>
       </div>
       <h1>Posts</h1>
+      <hr className="w-20 bg-white"></hr>
       <div>
         <PostList list={posts} />
       </div>
