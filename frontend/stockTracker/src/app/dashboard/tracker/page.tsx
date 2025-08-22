@@ -1,4 +1,5 @@
 import StockList from "@/app/components/stockList";
+import StockSearch from "@/app/components/stockSearch";
 import { clearCookies } from "@/app/cookieHandler";
 import { Button } from "@heroui/button";
 import { Card, CardBody, CardHeader } from "@heroui/card";
@@ -36,7 +37,7 @@ export default function Tracker() {
           Log Out
         </Button>
       </div>
-      <div className="grid w-full grid-rows-3">
+      <div className="grid h-full w-full grid-rows-3">
         <div className="row-start-2 mx-auto grid grid-cols-3 gap-5">
           <div className="col-span-1">
             <Card>
@@ -51,7 +52,8 @@ export default function Tracker() {
               </CardBody>
             </Card>
           </div>
-          <div className="col-span-2 row-span-1">
+          <div className="col-span-2 row-span-1 flex flex-col gap-5">
+            <StockSearch />
             <StockList />
           </div>
         </div>
