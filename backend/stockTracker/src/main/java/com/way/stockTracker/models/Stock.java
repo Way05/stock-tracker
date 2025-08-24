@@ -8,18 +8,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @NoArgsConstructor
-@Document(collection = "Stocks")
+@Document(collection = "stocks")
 public class Stock {
     @Id
     private String id;
     @Indexed
     private String ticker;
     private String company;
-    private String price;
 
-    public Stock(String ticker, String company, String price) {
+    public Stock(String ticker, String company) {
         this.ticker = ticker;
         this.company = company;
-        this.price = price;
     }
 }
