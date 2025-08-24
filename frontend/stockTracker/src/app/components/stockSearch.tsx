@@ -27,7 +27,9 @@ export default function StockSearch() {
 
   async function fetchStocks(query: string) {
     try {
-      const params: URLSearchParams = new URLSearchParams({ ticker: query });
+      const params: URLSearchParams = new URLSearchParams({
+        ticker: query.toUpperCase(),
+      });
       const response: Response = await fetch(
         "http://localhost:8080/api/stock/search?" + params.toString(),
       );
