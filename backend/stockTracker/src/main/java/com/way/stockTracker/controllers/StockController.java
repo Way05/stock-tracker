@@ -20,7 +20,7 @@ public class StockController {
 
     }
 
-    @RequestMapping("/search")
+    @GetMapping("/search")
     public ResponseEntity<Object> search(@RequestParam("ticker") String ticker) {
         return ResponseEntity.ok(stockService.getStockResults(ticker, 10));
     }
