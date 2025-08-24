@@ -4,10 +4,14 @@ import { Key, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { stockObject } from "../dataInterfaces";
 
+const placeholder: stockObject = {
+  ticker: "Search for an IPO",
+  company: "",
+  price: "",
+};
+
 export default function StockSearch() {
-  const [items, setItems] = useState<stockObject[]>([
-    { ticker: "Search for an IPO", company: "", price: "" },
-  ]);
+  const [items, setItems] = useState<stockObject[]>([placeholder]);
   const [selection, setSelection] = useState<Key | null>();
   const [input, setInput] = useState<string>("");
   const [debouncedInput] = useDebounce<string>(input, 500);
@@ -23,11 +27,9 @@ export default function StockSearch() {
 
   async function fetchStocks(query: string) {
     try {
+      const params: URLSearchParams = new URLSearchParams({ ticker: query });
       const response: Response = await fetch(
-        "http://localhost:8080/api/stock/search",
-        {
-          // body: query,
-        },
+        "http://localhost:8080/api/stock/search?" + params.toString(),
       );
 
       if (response.status == 200) {
@@ -48,6 +50,8 @@ export default function StockSearch() {
         console.log(searchResults);
         setItems(searchResults);
       })();
+    } else {
+      setItems([placeholder]);
     }
   }, [debouncedInput]);
 
