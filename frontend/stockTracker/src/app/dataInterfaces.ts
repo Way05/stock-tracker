@@ -10,3 +10,9 @@ export interface postObject {
   date: number;
   votes: number;
 }
+
+export interface stockObject {
+  ticker: string;
+  company: string;
+  price: string;
+}
