@@ -2,18 +2,18 @@
 import { Autocomplete, AutocompleteItem } from "@heroui/autocomplete";
 import { Key, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
-
-const placeholder = [{ label: "Search for an IPO", key: "label" }];
+import { stockObject } from "../dataInterfaces";
 
 export default function StockSearch() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<stockObject[]>([
+    { ticker: "Search for an IPO", company: "", price: "" },
+  ]);
   const [selection, setSelection] = useState<Key | null>();
   const [input, setInput] = useState<string>("");
   const [debouncedInput] = useDebounce<string>(input, 500);
 
   function onInputChange(input: string) {
     setInput(input);
-    console.log(input);
   }
 
   function onSelectionChange(key: Key | null) {
@@ -23,11 +23,16 @@ export default function StockSearch() {
 
   async function fetchStocks(query: string) {
     try {
-      const response: Response = await fetch("");
+      const response: Response = await fetch(
+        "http://localhost:8080/api/stock/search",
+        {
+          // body: query,
+        },
+      );
 
       if (response.status == 200) {
         const res = await response.json();
-        console.log(res);
+        return res;
       }
     } catch (e) {
       if (e instanceof Error) {
@@ -38,24 +43,41 @@ export default function StockSearch() {
 
   useEffect(() => {
     if (debouncedInput) {
-      const searchResults = fetchStocks(debouncedInput);
+      (async () => {
+        const searchResults: stockObject[] = await fetchStocks(debouncedInput);
+        console.log(searchResults);
+        setItems(searchResults);
+      })();
     }
   }, [debouncedInput]);
 
   return (
     <div>
       <Autocomplete
-        defaultItems={placeholder}
         label="Search"
+        defaultItems={items}
         placeholder="Search a stock"
-        items={items}
-        disabledKeys={["label"]}
+        disabledKeys={["Search for an IPO"]}
         onInputChange={onInputChange}
         onSelectionChange={onSelectionChange}
       >
-        {placeholder.map((stock) => {
+        {items.map((stock) => {
           return (
-            <AutocompleteItem key={stock.key}>{stock.label}</AutocompleteItem>
+            <AutocompleteItem key={stock.ticker} textValue={stock.ticker}>
+              <div className="flex grid-rows-2 items-center gap-2">
+                <div className="flex">
+                  <div className="flex flex-col">
+                    <span className="text-small">{stock.ticker}</span>
+                    <span className="text-tiny text-default-400">
+                      {stock.company}
+                    </span>
+                  </div>
+                  <div className="row-span-2 ml-5 flex items-center">
+                    <span className="text-small font-bold">{stock.price}</span>
+                  </div>
+                </div>
+              </div>
+            </AutocompleteItem>
           );
         })}
       </Autocomplete>
