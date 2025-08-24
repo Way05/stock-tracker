@@ -14,5 +14,4 @@ export interface postObject {
 export interface stockObject {
   ticker: string;
   company: string;
-  price: string;
 }

@@ -7,7 +7,6 @@ import { stockObject } from "../dataInterfaces";
 const placeholder: stockObject = {
   ticker: "Search for an IPO",
   company: "",
-  price: "",
 };
 
 export default function StockSearch() {
@@ -77,9 +76,6 @@ export default function StockSearch() {
                     <span className="text-tiny text-default-400">
                       {stock.company}
                     </span>
-                  </div>
-                  <div className="row-span-2 ml-5 flex items-center">
-                    <span className="text-small font-bold">{stock.price}</span>
                   </div>
                 </div>
               </div>
