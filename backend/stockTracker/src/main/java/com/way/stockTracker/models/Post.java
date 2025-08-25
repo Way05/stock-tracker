@@ -5,11 +5,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
-
 @Data
 @NoArgsConstructor
-@Document(collection = "Posts")
+@Document(collection = "posts")
 public class Post {
     @Id
     private String id;

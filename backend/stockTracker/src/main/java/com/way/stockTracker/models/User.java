@@ -12,7 +12,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@Document(collection = "Users")
+@Document(collection = "users")
 public class User implements UserDetails {
     @Id
     private String id;
