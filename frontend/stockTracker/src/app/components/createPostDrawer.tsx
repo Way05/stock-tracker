@@ -15,7 +15,7 @@ export default function CreatePostDrawer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <>
+    <div>
       <Button onPress={onOpen}>Create Post</Button>
       <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
         <DrawerContent>
@@ -62,6 +62,6 @@ export default function CreatePostDrawer() {
           )}
         </DrawerContent>
       </Drawer>
-    </>
+    </div>
   );
 }
